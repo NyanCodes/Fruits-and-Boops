@@ -1,4 +1,4 @@
-# Mario Bros Revival
+# Fruits and Boops
 
 A 2D platformer built with **Godot 4.7** (GL Compatibility renderer).
 
@@ -26,10 +26,10 @@ Coins, enemies, power-ups, the goal flag and Stages 2-3 are not built yet.
 
 ## Quick level testing
 
-`Scenes/Stage1.tscn` and `Scenes/Stage2.tscn` are independent, shorter levels.
-Open either scene and choose **Run Current Scene** (`Cmd + R` on macOS,
-`F6` on Windows/Linux). The normal Run button currently launches Stage 2
-for testing; the main menu's Play button launches Stage 1.
+The game opens on the main menu (`Scenes/MainMenu.tscn`). **Start Game** leads
+to a stage select with both stages. To jump straight into one level instead,
+open `Scenes/Stage1.tscn` or `Scenes/Stage2.tscn` and choose **Run Current
+Scene** (`Cmd + R` on macOS, `F6` on Windows/Linux).
 
 Stage 1 is 4,480 pixels wide and ends at its own finish flag. Stage 2 is
 4,544 pixels wide and contains only the later section, starting at x=0.
@@ -41,15 +41,19 @@ Both retain checkpoints and unlimited respawns. Edit each level in its own scene
 | ------ | ----------------------- |
 | Move   | `A` / `D` or `←` / `→`  |
 | Jump   | `Space`, `W`, or `↑`    |
+| Climb  | `W` / `S` or `↑` / `↓` on a ladder; `Space` jumps off |
 
 ## Layout
 
 | Path                                | Contents                                     |
 | ----------------------------------- | -------------------------------------------- |
-| `Scenes/Stage1.tscn`                | Stage 1 — the main scene                     |
+| `Scenes/MainMenu.tscn`              | Title screen and stage select — the main scene |
+| `Scenes/Stage1.tscn`                | Stage 1                                      |
+| `Scenes/Stage2.tscn`                | Stage 2                                      |
 | `Scenes/Player.tscn`                | The player; its origin sits at its feet        |
 | `Scenes/Game.tscn`                  | Older sandbox scene, kept for reference       |
 | `Scenes/hidden_block.tscn`          | Surprise block, not placed in a stage yet     |
+| `Scenes/Props/Ladder.tscn`          | Climbable ladder; set `height` in 16 px steps |
 | `Assets/Tilemap/world_tileset.tres` | Shared `TileSet` — 18x18 tiles, used by every stage |
 | `Scripts/`                          | GDScript files                                |
 | `Assets/`                           | Sprites and tilemaps                          |

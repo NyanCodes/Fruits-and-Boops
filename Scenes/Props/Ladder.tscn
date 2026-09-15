@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Scripts/ladder.gd" id="1_script"]
+
+[sub_resource type="RectangleShape2D" id="RS_grab"]
+resource_local_to_scene = true
+size = Vector2(12, 104)
+
+[sub_resource type="RectangleShape2D" id="RS_plank"]
+size = Vector2(16, 4)
+
+[node name="Ladder" type="Area2D"]
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_script")
+
+[node name="Grab" type="CollisionShape2D" parent="."]
+position = Vector2(0, -52)
+shape = SubResource("RS_grab")
+
+[node name="Plank" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plank"]
+position = Vector2(0, -94)
+shape = SubResource("RS_plank")
+one_way_collision = true

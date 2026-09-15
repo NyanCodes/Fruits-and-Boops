@@ -4,6 +4,24 @@
 [ext_resource type="Theme" uid="uid://m1753ja25swl" path="res://Assets/UI/menu_theme.tres" id="2_theme"]
 [ext_resource type="Texture2D" uid="uid://b410bwee5gxey" path="res://Assets/Backgrounds/sky_blue.png" id="3_bg"]
 [ext_resource type="Texture2D" uid="uid://dwf1fybhqyw77" path="res://Assets/UI/fruit.png" id="4_fruit"]
+[ext_resource type="Texture2D" path="res://Assets/PixelAdventure/Menu/Levels/01.png" id="5_level1"]
+[ext_resource type="Texture2D" path="res://Assets/PixelAdventure/Menu/Levels/02.png" id="6_level2"]
+
+[sub_resource type="StyleBoxFlat" id="card"]
+content_margin_left = 20.0
+content_margin_top = 18.0
+content_margin_right = 20.0
+content_margin_bottom = 18.0
+bg_color = Color(0.1, 0.122, 0.172, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.86, 0.42, 0.3)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="MainMenu" type="Control" unique_id=362434114]
 layout_mode = 3
@@ -41,10 +59,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -204.0
-offset_top = -203.0
-offset_right = 316.0
-offset_bottom = 246.0
+offset_left = -260.0
+offset_top = -225.0
+offset_right = 260.0
+offset_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 14
@@ -55,8 +73,8 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.898, 0.529, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 56
-text = "MARIO BROS
-REVIVAL"
+text = "FRUITS AND
+BOOPS"
 horizontal_alignment = 1
 
 [node name="Fruit" type="TextureRect" parent="Menu" unique_id=716027432]
@@ -247,6 +265,131 @@ text = "0% mutes audio. Changes apply immediately."
 horizontal_alignment = 1
 
 [node name="Back" type="Button" parent="SettingsPanel/Box"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "BACK"
+
+[node name="StagePanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -345.0
+offset_top = -265.0
+offset_right = 345.0
+offset_bottom = 265.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Box" type="VBoxContainer" parent="StagePanel"]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="Heading" type="Label" parent="StagePanel/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.898, 0.529, 1)
+theme_override_font_sizes/font_size = 34
+text = "SELECT STAGE"
+horizontal_alignment = 1
+
+[node name="Cards" type="HBoxContainer" parent="StagePanel/Box"]
+layout_mode = 2
+theme_override_constants/separation = 26
+alignment = 1
+
+[node name="Stage1" type="PanelContainer" parent="StagePanel/Box/Cards"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("card")
+
+[node name="Box" type="VBoxContainer" parent="StagePanel/Box/Cards/Stage1"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Number" type="TextureRect" parent="StagePanel/Box/Cards/Stage1/Box"]
+custom_minimum_size = Vector2(76, 68)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_level1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="StagePanel/Box/Cards/Stage1/Box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "STAGE 1"
+horizontal_alignment = 1
+
+[node name="Tagline" type="Label" parent="StagePanel/Box/Cards/Stage1/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.898, 0.529, 1)
+theme_override_font_sizes/font_size = 20
+text = "Basic Platforming"
+horizontal_alignment = 1
+
+[node name="About" type="Label" parent="StagePanel/Box/Cards/Stage1/Box"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Run, jump and stomp past pits, spikes and saws."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Play" type="Button" parent="StagePanel/Box/Cards/Stage1/Box"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "PLAY"
+
+[node name="Stage2" type="PanelContainer" parent="StagePanel/Box/Cards"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("card")
+
+[node name="Box" type="VBoxContainer" parent="StagePanel/Box/Cards/Stage2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Number" type="TextureRect" parent="StagePanel/Box/Cards/Stage2/Box"]
+custom_minimum_size = Vector2(76, 68)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_level2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="StagePanel/Box/Cards/Stage2/Box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "STAGE 2"
+horizontal_alignment = 1
+
+[node name="Tagline" type="Label" parent="StagePanel/Box/Cards/Stage2/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.898, 0.529, 1)
+theme_override_font_sizes/font_size = 20
+text = "Unexpected Obstacles"
+horizontal_alignment = 1
+
+[node name="About" type="Label" parent="StagePanel/Box/Cards/Stage2/Box"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Climb three trap-filled floors to the trophy."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Play" type="Button" parent="StagePanel/Box/Cards/Stage2/Box"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "PLAY"
+
+[node name="Back" type="Button" parent="StagePanel/Box"]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 size_flags_horizontal = 4
