@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dwf1fybhqyw77" path="res://Assets/UI/fruit.png" id="4_fruit"]
 [ext_resource type="Texture2D" path="res://Assets/PixelAdventure/Menu/Levels/01.png" id="5_level1"]
 [ext_resource type="Texture2D" path="res://Assets/PixelAdventure/Menu/Levels/02.png" id="6_level2"]
+[ext_resource type="Texture2D" path="res://Assets/PixelAdventure/Menu/Levels/03.png" id="7_level3"]
 
 [sub_resource type="StyleBoxFlat" id="card"]
 content_margin_left = 20.0
@@ -278,9 +279,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -345.0
+offset_left = -486.0
 offset_top = -265.0
-offset_right = 345.0
+offset_right = 486.0
 offset_bottom = 265.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -384,6 +385,50 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Play" type="Button" parent="StagePanel/Box/Cards/Stage2/Box"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "PLAY"
+
+[node name="Stage3" type="PanelContainer" parent="StagePanel/Box/Cards"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("card")
+
+[node name="Box" type="VBoxContainer" parent="StagePanel/Box/Cards/Stage3"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Number" type="TextureRect" parent="StagePanel/Box/Cards/Stage3/Box"]
+custom_minimum_size = Vector2(76, 68)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("7_level3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="StagePanel/Box/Cards/Stage3/Box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "STAGE 3"
+horizontal_alignment = 1
+
+[node name="Tagline" type="Label" parent="StagePanel/Box/Cards/Stage3/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.898, 0.529, 1)
+theme_override_font_sizes/font_size = 20
+text = "Final Challenge"
+horizontal_alignment = 1
+
+[node name="About" type="Label" parent="StagePanel/Box/Cards/Stage3/Box"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Fake floors, a hidden cave and a trap tower."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Play" type="Button" parent="StagePanel/Box/Cards/Stage3/Box"]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4

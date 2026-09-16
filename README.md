@@ -18,22 +18,27 @@ git-ignored on purpose — never commit it.
 
 - **Player movement** — walk, jump, gravity, and platform collision
   (`Scripts/player.gd`). Falling into a pit respawns you at the start.
-- **Stage 1: Basic Platforming** — `Scenes/Stage1.tscn`, the game's main scene.
-  A 215-tile stage that starts flat, then introduces a step, four pits, and
-  floating platforms.
+- **Stage 1: Basic Platforming** — `Scenes/Stage1.tscn`.
+- **Stage 2: Unexpected Obstacles** — `Scenes/Stage2.tscn`, three floors joined by ladders.
+- **Stage 3: Final Challenge** — `Scenes/Stage3.tscn`. Combines every mechanic:
+  a troll block over the first pit, a bridge of crumbling and invisible-but-solid
+  platforms, a secret fruit cave under a hole that looks like a death pit, a
+  three-floor ladder tower, a crumbling descent, and a fake floor before the goal.
+- Fruit to collect, enemies to stomp, traps, checkpoints and a goal in every stage.
 
-Coins, enemies, power-ups, the goal flag and Stages 2-3 are not built yet.
+Power-ups are not built yet.
 
 ## Quick level testing
 
 The game opens on the main menu (`Scenes/MainMenu.tscn`). **Start Game** leads
-to a stage select with both stages. To jump straight into one level instead,
-open `Scenes/Stage1.tscn` or `Scenes/Stage2.tscn` and choose **Run Current
-Scene** (`Cmd + R` on macOS, `F6` on Windows/Linux).
+to a stage select with all three stages. To jump straight into one level instead,
+open `Scenes/Stage1.tscn`, `Scenes/Stage2.tscn` or `Scenes/Stage3.tscn` and choose
+**Run Current Scene** (`Cmd + R` on macOS, `F6` on Windows/Linux).
 
 Stage 1 is 4,480 pixels wide and ends at its own finish flag. Stage 2 is
 4,544 pixels wide and contains only the later section, starting at x=0.
-Both retain checkpoints and unlimited respawns. Edit each level in its own scene.
+Stage 3 is 4,608 pixels wide with four checkpoints. All stages have unlimited
+respawns. Edit each level in its own scene.
 
 ## Controls
 
@@ -50,6 +55,7 @@ Both retain checkpoints and unlimited respawns. Edit each level in its own scene
 | `Scenes/MainMenu.tscn`              | Title screen and stage select — the main scene |
 | `Scenes/Stage1.tscn`                | Stage 1                                      |
 | `Scenes/Stage2.tscn`                | Stage 2                                      |
+| `Scenes/Stage3.tscn`                | Stage 3                                      |
 | `Scenes/Player.tscn`                | The player; its origin sits at its feet        |
 | `Scenes/Game.tscn`                  | Older sandbox scene, kept for reference       |
 | `Scenes/hidden_block.tscn`          | Surprise block, not placed in a stage yet     |

@@ -12,6 +12,7 @@ extends Control
 const STAGES := {
 	&"Stage1": "res://Scenes/Stage1.tscn",
 	&"Stage2": "res://Scenes/Stage2.tscn",
+	&"Stage3": "res://Scenes/Stage3.tscn",
 }
 
 ## Action name -> the label the player should see, in the order shown.
