@@ -1,0 +1,146 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_pause"]
+[ext_resource type="Theme" path="res://Assets/UI/menu_theme.tres" id="2_theme"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+layer = 20
+script = ExtResource("1_pause")
+
+[node name="Overlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+color = Color(0.018, 0.024, 0.038, 0.82)
+
+[node name="Panel" type="PanelContainer" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -330.0
+offset_top = -310.0
+offset_right = 330.0
+offset_bottom = 310.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+
+[node name="Box" type="VBoxContainer" parent="Overlay/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Heading" type="Label" parent="Overlay/Panel/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.898, 0.529, 1)
+theme_override_font_sizes/font_size = 34
+text = "GAME PAUSED"
+horizontal_alignment = 1
+
+[node name="Master" type="HBoxContainer" parent="Overlay/Panel/Box"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="Overlay/Panel/Box/Master"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Master"
+
+[node name="Slider" type="HSlider" parent="Overlay/Panel/Box/Master"]
+custom_minimum_size = Vector2(220, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 100.0
+step = 1.0
+value = 100.0
+
+[node name="Value" type="Label" parent="Overlay/Panel/Box/Master"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 2
+
+[node name="Music" type="HBoxContainer" parent="Overlay/Panel/Box"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="Overlay/Panel/Box/Music"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Music"
+
+[node name="Slider" type="HSlider" parent="Overlay/Panel/Box/Music"]
+custom_minimum_size = Vector2(220, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 100.0
+step = 1.0
+value = 100.0
+
+[node name="Value" type="Label" parent="Overlay/Panel/Box/Music"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 2
+
+[node name="SFX" type="HBoxContainer" parent="Overlay/Panel/Box"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="Overlay/Panel/Box/SFX"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Sound effects"
+
+[node name="Slider" type="HSlider" parent="Overlay/Panel/Box/SFX"]
+custom_minimum_size = Vector2(220, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 100.0
+step = 1.0
+value = 100.0
+
+[node name="Value" type="Label" parent="Overlay/Panel/Box/SFX"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "100%"
+horizontal_alignment = 2
+
+[node name="Hint" type="Label" parent="Overlay/Panel/Box"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Changes apply immediately. Press Esc again to resume."
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="Overlay/Panel/Box"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "RESUME"
+
+[node name="Restart" type="Button" parent="Overlay/Panel/Box"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "RESTART STAGE"
+
+[node name="MainMenu" type="Button" parent="Overlay/Panel/Box"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "MAIN MENU"
+
+[node name="Quit" type="Button" parent="Overlay/Panel/Box"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "QUIT GAME"

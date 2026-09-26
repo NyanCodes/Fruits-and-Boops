@@ -1,9 +1,9 @@
-[gd_scene load_steps=15 format=3]
+[gd_scene format=3 uid="uid://c7t1a6nln31sk"]
 
-[ext_resource type="Script" path="res://Scripts/hazard.gd" id="1_script"]
-[ext_resource type="Script" path="res://Scripts/loop_player.gd" id="90_loop"]
-[ext_resource type="AudioStream" path="res://Assets/Audio/saw_loop.wav" id="91_snd"]
-[ext_resource type="Texture2D" path="res://Assets/PixelAdventure/Traps/Saw/On (38x38).png" id="2_tex"]
+[ext_resource type="Script" uid="uid://bo7huhbdymwwv" path="res://Scripts/falling_saw.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://vud1d7ybg7ad" path="res://Assets/PixelAdventure/Traps/Saw/On (38x38).png" id="2_tex"]
+[ext_resource type="Script" uid="uid://cvhcmaw2miab8" path="res://Scripts/loop_player.gd" id="90_loop"]
+[ext_resource type="AudioStream" uid="uid://biyeqf4dnul5l" path="res://Assets/Audio/saw_loop.wav" id="91_snd"]
 
 [sub_resource type="AtlasTexture" id="A2_tex_0"]
 atlas = ExtResource("2_tex")
@@ -64,7 +64,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("A2_tex_7")
 }],
-"loop": true,
+"loop": 1,
 "name": &"spin",
 "speed": 20.0
 }]
@@ -72,18 +72,18 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CS_saw"]
 radius = 15.0
 
-[node name="Saw" type="Area2D"]
+[node name="Saw" type="Area2D" unique_id=1683263565]
 script = ExtResource("1_script")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1740149553]
 sprite_frames = SubResource("SF_saw")
 animation = &"spin"
 autoplay = "spin"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=761462332]
 shape = SubResource("CS_saw")
 
-[node name="Ambient" type="AudioStreamPlayer2D" parent="."]
+[node name="Ambient" type="AudioStreamPlayer2D" parent="." unique_id=1044754720]
 stream = ExtResource("91_snd")
 volume_db = -9.0
 max_distance = 260.0

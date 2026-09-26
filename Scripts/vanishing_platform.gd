@@ -25,12 +25,10 @@ var _home: Vector2
 var _triggered := false
 var _token := 0                    ## bumped by reset() to strand stale awaits
 
-
 func _ready() -> void:
 	add_to_group(RESET_GROUP)
 	_home = position
 	_detector.body_entered.connect(_on_detected)
-
 
 func _on_detected(body: Node2D) -> void:
 	if _triggered or not body.has_method("die"):
@@ -59,14 +57,12 @@ func reset() -> void:
 	_sprite.modulate.a = 1.0
 	_shape.set_deferred("disabled", false)
 
-
 func _vanish() -> void:
 	_sprite.visible = false
 	Audio.sfx(&"crumble", -3.0)
 	if not stay_solid:
 		_shape.set_deferred("disabled", true)
 	vanished.emit()
-
 
 ## A tell, but a short one - the player sees it wobble and has to decide.
 func _shudder() -> void:

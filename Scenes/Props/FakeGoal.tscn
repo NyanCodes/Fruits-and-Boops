@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/PixelAdventure/Items/Checkpoints/End/End (Idle).png" id="2_tex"]
+
+[node name="FakeGoal" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("2_tex")
+modulate = Color(1, 0.82, 0.42, 1)

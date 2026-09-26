@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Scripts/troll_pipe.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://Scenes/Props/Crabby.tscn" id="2_enemy"]
+
+[sub_resource type="RectangleShape2D" id="RS_detector"]
+size = Vector2(72, 42)
+
+[node name="TrollPipe" type="Area2D"]
+script = ExtResource("1_script")
+collision_layer = 0
+collision_mask = 0
+enemy_scene = ExtResource("2_enemy")
+
+[node name="Detector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+position = Vector2(0, -20)
+shape = SubResource("RS_detector")

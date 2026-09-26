@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/Props/CoinCherry.tscn" id="8_pf2v6"]
 [ext_resource type="PackedScene" path="res://Scenes/Props/Spike.tscn" id="9_42j0m"]
 [ext_resource type="PackedScene" path="res://Scenes/Props/SpikeHidden.tscn" id="11_fydfd"]
-[ext_resource type="PackedScene" path="res://Scenes/Props/Saw.tscn" id="13_2wo5r"]
+[ext_resource type="PackedScene" uid="uid://c7t1a6nln31sk" path="res://Scenes/Props/Saw.tscn" id="13_2wo5r"]
 [ext_resource type="PackedScene" path="res://Scenes/Props/Fire.tscn" id="14_o4amm"]
 [ext_resource type="PackedScene" path="res://Scenes/Props/HiddenBlock.tscn" id="15_p3gdu"]
 [ext_resource type="PackedScene" path="res://Scenes/Props/VanishingPlatform.tscn" id="17_ue5uy"]
@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://2iyjisgye5ug" path="res://Assets/UI/face.png" id="35_0ey2m"]
 [ext_resource type="Theme" uid="uid://m1753ja25swl" path="res://Assets/UI/menu_theme.tres" id="36_4yuoi"]
 [ext_resource type="PackedScene" path="res://Scenes/Props/Ladder.tscn" id="37_ladder"]
+[ext_resource type="PackedScene" path="res://Scenes/Props/TrollPipe.tscn" id="38_troll_pipe"]
+[ext_resource type="PackedScene" path="res://Scenes/Props/SpikeWarningSign.tscn" id="41_spike_warning"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_efiip"]
 size = Vector2(5056, 40)
@@ -65,8 +67,9 @@ corner_radius_bottom_left = 14
 shadow_color = Color(0, 0, 0, 0.5)
 shadow_size = 10
 
-[node name="Stage2" type="Node2D" unique_id=1882321402]
+[node name="Stage3" type="Node2D" unique_id=1882321402]
 script = ExtResource("1_qbslr")
+stage_number = 3
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=558798640]
 layer = -1
@@ -382,11 +385,11 @@ position = Vector2(3800, -312)
 
 [node name="Traps" type="Node2D" parent="." unique_id=383354665]
 
-[node name="Sp22" parent="Traps" unique_id=1693507533 instance=ExtResource("9_42j0m")]
-position = Vector2(296, 0)
+[node name="HS10" parent="Traps" unique_id=2048804630 instance=ExtResource("11_fydfd")]
+position = Vector2(212, 1)
 
-[node name="Sp23" parent="Traps" unique_id=1401969158 instance=ExtResource("9_42j0m")]
-position = Vector2(312, 0)
+[node name="HS11" parent="Traps" unique_id=2101710042 instance=ExtResource("11_fydfd")]
+position = Vector2(227, 1)
 
 [node name="Sp24" parent="Traps" unique_id=149892233 instance=ExtResource("9_42j0m")]
 position = Vector2(3128, -96)
@@ -429,41 +432,44 @@ position = Vector2(3368, -288)
 
 [node name="Saw6" parent="Traps" unique_id=1138615995 instance=ExtResource("13_2wo5r")]
 position = Vector2(1448, -60)
+drop_when_close = true
+drop_distance = 40
 
 [node name="Saw7" parent="Traps" unique_id=539495757 instance=ExtResource("13_2wo5r")]
 position = Vector2(2296, -140)
 
 [node name="Saw8" parent="Traps" unique_id=696208187 instance=ExtResource("13_2wo5r")]
 position = Vector2(3608, -155)
+drop_when_close = true
+trigger_distance = 40.0
+trigger_vertical_distance = 64.0
+drop_distance = 44
+roll_after_drop = true
 
 [node name="Saw10" parent="Traps" unique_id=525832632 instance=ExtResource("13_2wo5r")]
 position = Vector2(4168, -326)
 
-[node name="Saw11" parent="Traps" unique_id=247931622 instance=ExtResource("13_2wo5r")]
-position = Vector2(2808, -332)
-
 [node name="Fire5" parent="Traps" unique_id=1888336867 instance=ExtResource("14_o4amm")]
 position = Vector2(328, 0)
-
-[node name="Fire6" parent="Traps" unique_id=911889635 instance=ExtResource("14_o4amm")]
-position = Vector2(1688, 0)
 
 [node name="Fire8" parent="Traps" unique_id=1098613759 instance=ExtResource("14_o4amm")]
 position = Vector2(2648, -96)
 
-[node name="Fire10" parent="Traps" unique_id=1556087228 instance=ExtResource("14_o4amm")]
-position = Vector2(3880, -288)
+[node name="TrollPipeMiddle" parent="Traps" unique_id=1940059002 instance=ExtResource("38_troll_pipe")]
+position = Vector2(1800, 0)
+
+[node name="SpikeWarningSign" parent="." unique_id=1728567748 instance=ExtResource("41_spike_warning")]
+position = Vector2(2720, 0)
 
 [node name="Blocks" type="Node2D" parent="." unique_id=1514331014]
 
 [node name="HB8" parent="Blocks" unique_id=583088789 instance=ExtResource("15_p3gdu")]
-position = Vector2(200, -56)
-
-[node name="HB9" parent="Blocks" unique_id=1276078565 instance=ExtResource("15_p3gdu")]
-position = Vector2(1368, -56)
+position = Vector2(196, -68)
+reaction = 1
+escape_distance = 34.0
 
 [node name="HB10" parent="Blocks" unique_id=1568397934 instance=ExtResource("15_p3gdu")]
-position = Vector2(3448, -152)
+position = Vector2(3169, -169)
 
 [node name="HB11" parent="Blocks" unique_id=1292910995 instance=ExtResource("15_p3gdu")]
 position = Vector2(2328, -152)
@@ -485,23 +491,10 @@ position = Vector2(2344, -136)
 [node name="VP26" parent="Vanishing" unique_id=89081353 instance=ExtResource("17_ue5uy")]
 position = Vector2(2440, -136)
 
-[node name="VP27" parent="Vanishing" unique_id=374828526 instance=ExtResource("17_ue5uy")]
-position = Vector2(4344, -280)
-grace = 0.4
-stay_solid = true
-
-[node name="VP28" parent="Vanishing" unique_id=374212453 instance=ExtResource("17_ue5uy")]
-position = Vector2(4360, -280)
-grace = 0.4
-stay_solid = true
-
 [node name="Enemies" type="Node2D" parent="." unique_id=2127209578]
 
 [node name="E8" parent="Enemies" unique_id=711993927 instance=ExtResource("19_lry3r")]
 position = Vector2(376, 0)
-
-[node name="E9" parent="Enemies" unique_id=1593331963 instance=ExtResource("21_puob2")]
-position = Vector2(1448, 0)
 
 [node name="E10" parent="Enemies" unique_id=270195825 instance=ExtResource("22_ai3nw")]
 position = Vector2(2568, 0)
@@ -579,11 +572,28 @@ shape = SubResource("RectangleShape2D_efiip")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1288420809]
 
-[node name="FruitPanel" type="PanelContainer" parent="HUD" unique_id=1542110289]
+[node name="TimerPanel" type="PanelContainer" parent="HUD" unique_id=926369783]
 offset_left = 14.0
 offset_top = 12.0
 offset_right = 190.0
 offset_bottom = 60.0
+theme_override_styles/panel = SubResource("SB_hud")
+
+[node name="Time" type="Label" parent="HUD/TimerPanel" unique_id=986892260]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.968, 0.909, 1)
+theme_override_colors/font_outline_color = Color(0.043, 0.054, 0.078, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 26
+text = "TIME  00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FruitPanel" type="PanelContainer" parent="HUD" unique_id=1542110289]
+offset_left = 14.0
+offset_top = 68.0
+offset_right = 190.0
+offset_bottom = 116.0
 theme_override_styles/panel = SubResource("SB_hud")
 
 [node name="Row" type="HBoxContainer" parent="HUD/FruitPanel" unique_id=1560487125]

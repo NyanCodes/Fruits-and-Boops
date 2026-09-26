@@ -45,6 +45,7 @@ var _climbing := false
 
 
 func _ready() -> void:
+	add_to_group("player")
 	_spawn_point = global_position
 
 

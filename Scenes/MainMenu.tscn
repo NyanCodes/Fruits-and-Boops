@@ -61,9 +61,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -260.0
-offset_top = -225.0
+offset_top = -285.0
 offset_right = 260.0
-offset_bottom = 225.0
+offset_bottom = 285.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 14
@@ -110,11 +110,31 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "SETTINGS"
 
+[node name="Credits" type="Button" parent="Menu/Buttons"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "CREDITS"
+
 [node name="Quit" type="Button" parent="Menu/Buttons" unique_id=1103371864]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "QUIT"
+
+[node name="Byline" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -46.0
+offset_right = 430.0
+offset_bottom = -16.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.968, 0.909, 0.82)
+theme_override_font_sizes/font_size = 17
+text = "By Nyan Myo Sett and Lwin Pyae Aung"
 
 [node name="ControlsPanel" type="PanelContainer" parent="." unique_id=1814998226]
 visible = false
@@ -271,6 +291,60 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "BACK"
 
+[node name="CreditsPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -220.0
+offset_right = 340.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Box" type="VBoxContainer" parent="CreditsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Heading" type="Label" parent="CreditsPanel/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.898, 0.529, 1)
+theme_override_font_sizes/font_size = 34
+text = "CREDITS"
+horizontal_alignment = 1
+
+[node name="CreatorsHeading" type="Label" parent="CreditsPanel/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.898, 0.529, 1)
+theme_override_font_sizes/font_size = 19
+text = "CREATED BY"
+horizontal_alignment = 1
+
+[node name="Creators" type="Label" parent="CreditsPanel/Box"]
+layout_mode = 2
+text = "Nyan Myo Sett and Lwin Pyae Aung"
+horizontal_alignment = 1
+
+[node name="Music" type="Label" parent="CreditsPanel/Box"]
+layout_mode = 2
+text = "Background music from Solstice\nNES game, 1990"
+horizontal_alignment = 1
+
+[node name="Assets" type="Label" parent="CreditsPanel/Box"]
+layout_mode = 2
+text = "Game assets: Pixel Platformer by Kenney\nhttps://kenney.nl/assets/pixel-platformer"
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="CreditsPanel/Box"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "BACK"
+
 [node name="StagePanel" type="PanelContainer" parent="."]
 visible = false
 layout_mode = 1
@@ -344,6 +418,9 @@ autowrap_mode = 2
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../../../Stage3/Box/Play")
+focus_neighbor_right = NodePath("../../../Stage2/Box/Play")
+focus_neighbor_bottom = NodePath("../../../../Back")
 text = "PLAY"
 
 [node name="Stage2" type="PanelContainer" parent="StagePanel/Box/Cards"]
@@ -373,14 +450,14 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.898, 0.529, 1)
 theme_override_font_sizes/font_size = 20
-text = "Unexpected Obstacles"
+text = "Hidden Hazards"
 horizontal_alignment = 1
 
 [node name="About" type="Label" parent="StagePanel/Box/Cards/Stage2/Box"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Climb three trap-filled floors to the trophy."
+text = "Fake floors, a hidden cave and a trap tower."
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -388,6 +465,9 @@ autowrap_mode = 2
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../../../Stage1/Box/Play")
+focus_neighbor_right = NodePath("../../../Stage3/Box/Play")
+focus_neighbor_bottom = NodePath("../../../../Back")
 text = "PLAY"
 
 [node name="Stage3" type="PanelContainer" parent="StagePanel/Box/Cards"]
@@ -417,14 +497,14 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.898, 0.529, 1)
 theme_override_font_sizes/font_size = 20
-text = "Final Challenge"
+text = "Unexpected Obstacles"
 horizontal_alignment = 1
 
 [node name="About" type="Label" parent="StagePanel/Box/Cards/Stage3/Box"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "Fake floors, a hidden cave and a trap tower."
+text = "Climb three trap-filled floors to the trophy."
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -432,10 +512,16 @@ autowrap_mode = 2
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../../../Stage2/Box/Play")
+focus_neighbor_right = NodePath("../../../Stage1/Box/Play")
+focus_neighbor_bottom = NodePath("../../../../Back")
 text = "PLAY"
 
 [node name="Back" type="Button" parent="StagePanel/Box"]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../Cards/Stage2/Box/Play")
+focus_neighbor_left = NodePath("../Cards/Stage1/Box/Play")
+focus_neighbor_right = NodePath("../Cards/Stage3/Box/Play")
 text = "BACK"

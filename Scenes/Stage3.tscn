@@ -1,7 +1,7 @@
-[gd_scene format=4]
+[gd_scene format=4 uid="uid://b4vo75ex2qa6a"]
 
 [ext_resource type="Script" uid="uid://bn1ockqeovxjl" path="res://Scripts/stage.gd" id="1_qbslr"]
-[ext_resource type="Texture2D" path="res://Assets/Backgrounds/sky_orange.png" id="2_vmp7e"]
+[ext_resource type="Texture2D" uid="uid://du07qcxob4vb3" path="res://Assets/Backgrounds/sky_orange.png" id="2_vmp7e"]
 [ext_resource type="TileSet" uid="uid://bwcmlsw2pptq2" path="res://Assets/PixelAdventure/terrain_pa.tres" id="3_lksx3"]
 [ext_resource type="Texture2D" uid="uid://bw81orfvckn1" path="res://Assets/PixelAdventure/Items/Checkpoints/Start/Start (Idle).png" id="4_l3nbs"]
 [ext_resource type="PackedScene" path="res://Scenes/Props/Coin.tscn" id="5_i1c21"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/Props/CoinCherry.tscn" id="8_pf2v6"]
 [ext_resource type="PackedScene" path="res://Scenes/Props/Spike.tscn" id="9_42j0m"]
 [ext_resource type="PackedScene" path="res://Scenes/Props/SpikeHidden.tscn" id="11_fydfd"]
-[ext_resource type="PackedScene" path="res://Scenes/Props/Saw.tscn" id="13_2wo5r"]
+[ext_resource type="PackedScene" uid="uid://c7t1a6nln31sk" path="res://Scenes/Props/Saw.tscn" id="13_2wo5r"]
 [ext_resource type="PackedScene" path="res://Scenes/Props/Fire.tscn" id="14_o4amm"]
 [ext_resource type="PackedScene" path="res://Scenes/Props/HiddenBlock.tscn" id="15_p3gdu"]
 [ext_resource type="PackedScene" path="res://Scenes/Props/VanishingPlatform.tscn" id="17_ue5uy"]
@@ -65,8 +65,10 @@ corner_radius_bottom_left = 14
 shadow_color = Color(0, 0, 0, 0.5)
 shadow_size = 10
 
-[node name="Stage3" type="Node2D" unique_id=1882321402]
+[node name="Stage2" type="Node2D" unique_id=1882321402]
 script = ExtResource("1_qbslr")
+stage_number = 2
+next_scene = "res://Scenes/Stage2.tscn"
 
 [node name="Background" type="CanvasLayer" parent="." unique_id=558798640]
 layer = -1
@@ -375,7 +377,7 @@ position = Vector2(2424, -160)
 position = Vector2(2568, -160)
 
 [node name="Saw2" parent="Traps" unique_id=875262510 instance=ExtResource("13_2wo5r")]
-position = Vector2(2600, -348)
+position = Vector2(2587, -361)
 
 [node name="Fire3" parent="Traps" unique_id=1254671179 instance=ExtResource("14_o4amm")]
 position = Vector2(3560, 0)
@@ -396,9 +398,12 @@ position = Vector2(4376, 0)
 
 [node name="HB0" parent="Blocks" unique_id=1994895493 instance=ExtResource("15_p3gdu")]
 position = Vector2(744, -56)
+reaction = 1
+escape_distance = 34.0
 
 [node name="HB1" parent="Blocks" unique_id=61547673 instance=ExtResource("15_p3gdu")]
 position = Vector2(2536, -88)
+reaction = 2
 
 [node name="Vanishing" type="Node2D" parent="." unique_id=1407699564]
 
@@ -529,11 +534,28 @@ shape = SubResource("RectangleShape2D_efiip")
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1288420809]
 
-[node name="FruitPanel" type="PanelContainer" parent="HUD" unique_id=1542110289]
+[node name="TimerPanel" type="PanelContainer" parent="HUD"]
 offset_left = 14.0
 offset_top = 12.0
 offset_right = 190.0
 offset_bottom = 60.0
+theme_override_styles/panel = SubResource("SB_hud")
+
+[node name="Time" type="Label" parent="HUD/TimerPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+theme_override_colors/font_color = Color(1, 0.968, 0.909, 1)
+theme_override_colors/font_outline_color = Color(0.043, 0.054, 0.078, 1)
+theme_override_constants/outline_size = 8
+text = "TIME  00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FruitPanel" type="PanelContainer" parent="HUD" unique_id=1542110289]
+offset_left = 14.0
+offset_top = 68.0
+offset_right = 190.0
+offset_bottom = 116.0
 theme_override_styles/panel = SubResource("SB_hud")
 
 [node name="Row" type="HBoxContainer" parent="HUD/FruitPanel" unique_id=1560487125]

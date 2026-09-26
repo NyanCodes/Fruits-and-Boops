@@ -7,7 +7,7 @@ A 2D platformer built with **Godot 4.7** (GL Compatibility renderer).
 1. Install [Godot 4.7](https://godotengine.org/download) or newer.
 2. Clone the repo:
    ```bash
-   git clone https://github.com/NyanCodes/mario_bros_revival.git
+   git clone https://github.com/NyanCodes/Fruits-and-Boops.git
    ```
 3. In the Godot Project Manager, click **Import**, select `project.godot`, and open it.
 
@@ -24,9 +24,17 @@ git-ignored on purpose — never commit it.
   a troll block over the first pit, a bridge of crumbling and invisible-but-solid
   platforms, a secret fruit cave under a hole that looks like a death pit, a
   three-floor ladder tower, a crumbling descent, and a fake floor before the goal.
+- **Cat Mario traps** — Stage 2 introduces blocks that escape or reveal spikes,
+  a falling wheel, a saw that drops and rolls toward the player, an enemy-spawning
+  pipe, and a harmless decoy goal. The other cave saws stay stationary. Stage 3
+  also has a harmless decoy goal near the finish. Active traps reset after death.
 - Fruit to collect, enemies to stomp, traps, checkpoints and a goal in every stage.
 
 Power-ups are not built yet.
+
+Remaining Cat Mario-style follow-ups are poison or fake power-ups, deadly
+background scenery, approach-triggered enemy spawns, and switch-controlled or
+moving platforms.
 
 ## Quick level testing
 

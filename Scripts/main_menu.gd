@@ -1,7 +1,7 @@
 extends Control
 
-## Title screen: Start Game / Controls / Settings / Quit. Start Game opens the
-## stage select, where each stage card has its own Play button.
+## Title screen: Start Game / Controls / Settings / Credits / Quit. Start Game
+## opens the stage select, where each stage card has its own Play button.
 ##
 ## The controls list is built from the InputMap at runtime rather than typed
 ## out here, so rebinding a key in Project Settings updates this screen too
@@ -11,8 +11,8 @@ extends Control
 ## Adding a stage is a new card in MainMenu.tscn plus one line here.
 const STAGES := {
 	&"Stage1": "res://Scenes/Stage1.tscn",
-	&"Stage2": "res://Scenes/Stage2.tscn",
-	&"Stage3": "res://Scenes/Stage3.tscn",
+	&"Stage2": "res://Scenes/Stage3.tscn",
+	&"Stage3": "res://Scenes/Stage2.tscn",
 }
 
 ## Action name -> the label the player should see, in the order shown.
@@ -29,8 +29,10 @@ const ACTIONS: Array[Array] = [
 @onready var _keys: GridContainer = $ControlsPanel/Box/Keys
 @onready var _start_button: Button = $Menu/Buttons/Start
 @onready var _settings: Control = $SettingsPanel
+@onready var _credits: Control = $CreditsPanel
 @onready var _stages: Control = $StagePanel
 @onready var _cards: Control = $StagePanel/Box/Cards
+@onready var _byline: Label = $Byline
 
 
 func _ready() -> void:
@@ -41,7 +43,9 @@ func _ready() -> void:
 		card.get_node("Box/Play").pressed.connect(_start_stage.bind(STAGES[card.name]))
 	$Menu/Buttons/Controls.pressed.connect(_show_controls)
 	$Menu/Buttons/Settings.pressed.connect(_show_settings)
+	$Menu/Buttons/Credits.pressed.connect(_show_credits)
 	$SettingsPanel/Box/Back.pressed.connect(_leave_settings)
+	$CreditsPanel/Box/Back.pressed.connect(_leave_credits)
 	for bus in Audio.VOLUME_BUSES:
 		var row := _settings.get_node("Box/" + str(bus))
 		var slider := row.get_node("Slider") as HSlider
@@ -70,6 +74,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	get_viewport().set_input_as_handled()
 	if _settings.visible:
 		_leave_settings()
+	elif _credits.visible:
+		_leave_credits()
 	elif _stages.visible:
 		_leave_stages()
 	elif _controls.visible:
@@ -111,27 +117,39 @@ func _show_menu() -> void:
 	_menu.visible = true
 	_controls.visible = false
 	_settings.visible = false
+	_credits.visible = false
 	_stages.visible = false
+	_byline.visible = true
 	_start_button.grab_focus()
 
 
 func _show_controls() -> void:
 	_menu.visible = false
+	_byline.visible = false
 	_controls.visible = true
 	$ControlsPanel/Box/Back.grab_focus()
 
 
 func _show_settings() -> void:
 	_menu.visible = false
+	_byline.visible = false
 	_controls.visible = false
 	_settings.visible = true
 	$SettingsPanel/Box/Master/Slider.grab_focus()
+
+
+func _show_credits() -> void:
+	_menu.visible = false
+	_byline.visible = false
+	_credits.visible = true
+	$CreditsPanel/Box/Back.grab_focus()
 
 
 ## Focus lands on the first stage, so Enter from the title plays Stage 1 in
 ## two presses - the same as the old Start button's one, plus the choice.
 func _show_stages() -> void:
 	_menu.visible = false
+	_byline.visible = false
 	_stages.visible = true
 	_cards.get_child(0).get_node("Box/Play").grab_focus()
 
@@ -144,6 +162,11 @@ func _leave_settings() -> void:
 	Audio.save_volume_settings()
 	_show_menu()
 	$Menu/Buttons/Settings.grab_focus()
+
+
+func _leave_credits() -> void:
+	_show_menu()
+	$Menu/Buttons/Credits.grab_focus()
 
 
 func _start_stage(scene: String) -> void:

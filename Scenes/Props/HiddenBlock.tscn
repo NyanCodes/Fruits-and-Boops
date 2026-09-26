@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://Scripts/hidden_block.gd" id="1_script"]
 [ext_resource type="Texture2D" path="res://Assets/PixelAdventure/Terrain/Terrain (16x16).png" id="2_terrain"]
@@ -10,6 +10,9 @@ region = Rect2(288, 144, 16, 16)
 [sub_resource type="RectangleShape2D" id="RS_block"]
 size = Vector2(16, 16)
 
+[sub_resource type="RectangleShape2D" id="RS_spike"]
+size = Vector2(14, 6)
+
 [node name="HiddenBlock" type="StaticBody2D"]
 script = ExtResource("1_script")
 
@@ -20,3 +23,10 @@ texture = SubResource("AT_block")
 rotation = 3.1415927
 shape = SubResource("RS_block")
 one_way_collision = true
+
+[node name="SpikeHitBox" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpikeHitBox"]
+position = Vector2(0, -12)
+shape = SubResource("RS_spike")

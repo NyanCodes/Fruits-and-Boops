@@ -1,11 +1,13 @@
-[gd_scene format=4 uid="uid://dw23gvl8k3433"]
+[gd_scene format=4 uid="uid://dyh36fyucudjr"]
 
 [ext_resource type="PackedScene" uid="uid://ourgfjf251c0" path="res://Scenes/Player.tscn" id="1_iukft"]
-[ext_resource type="Texture2D" uid="uid://bl7s2sglaud28" path="res://Assets/Tilemap/tilemap.png" id="2_gl6un"]
 [ext_resource type="PackedScene" uid="uid://cl04b6g4ci4kc" path="res://Scenes/hidden_block.tscn" id="2_j5yw3"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gl6un"]
+load_path = "res://.godot/imported/tilemap.png-e11690f56d93b402633ddfc665161690.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j5yw3"]
-texture = ExtResource("2_gl6un")
+texture = SubResource("CompressedTexture2D_gl6un")
 separation = Vector2i(1, 1)
 texture_region_size = Vector2i(18, 18)
 3:5/0 = 0

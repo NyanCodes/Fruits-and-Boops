@@ -1,10 +1,8 @@
-[gd_scene format=3 uid="uid://cl04b6g4ci4kc"]
+[gd_scene format=3 uid="uid://dj01yx6abki5j"]
 
 [ext_resource type="Script" uid="uid://3o6tt7dhipyc" path="res://Scripts/hidden_block.gd" id="1_me6ix"]
-[ext_resource type="Texture2D" uid="uid://dxud3vwihfjjn" path="res://Assets/Tilemap/tilemap_packed.png" id="1_yl247"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j5yw3"]
-atlas = ExtResource("1_yl247")
 region = Rect2(162, 18, 18, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwy4h"]
